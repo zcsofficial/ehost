@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="mb-4">Doctor Dashboard</h1>
+<p>Welcome, Dr. {{ user.first_name }}</p>
+<h3>Your Schedule:</h3>
+<ul class="list-group">
+    {% for appointment in user.doctor_appointments.all %}
+        <li class="list-group-item">
+            Appointment with {{ appointment.patient.first_name }} on {{ appointment.date }}
+        </li>
+    {% empty %}
+        <li class="list-group-item">No appointments scheduled.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
